@@ -40,9 +40,11 @@ jobs:
       - run: | 
           ruff check .
           ruff fix .
-
+    outputs:
+      deploy-on-main: ${{ env.IS_BETA }}
+  
   deploy-main:
-    if: ${{ env.IS_BETA }} == false 
+    if: build.outputs == false 
     steps:
       - uses: actions/checkout@v4
       - uses: stefanzweifel/git-auto-commit-action@v4
