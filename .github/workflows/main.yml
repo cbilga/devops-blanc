@@ -1,6 +1,10 @@
 name: Push and test
 
-on: [push]
+on: 
+  push:
+    branches:
+      - development
+      - main
 
 permissions:
   id-token: write
@@ -36,11 +40,11 @@ jobs:
       - run: | 
           ruff check .
           ruff fix .
-      - uses: stefanzweifel/git-auto-commit-action@v4
+
+  deploy-main:
+    steps:
+      if env.IS_BETA == false
+      uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: 'style fixes by ruff'
-      #- name: Lint with Ruff
-      #  run: |
-      #    pip install ruff
-      #    ruff check --output-format=github .
-      #    continue-on-error: false
+          branch: mains
