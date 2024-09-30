@@ -3,8 +3,8 @@ name: Push and test
 on: [push]
 
 permissions:
-  id-token: read|write
-  contents: read|write
+  id-token: all
+  contents: all
 
 jobs:
   build:
