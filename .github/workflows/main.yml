@@ -43,8 +43,9 @@ jobs:
 
   deploy-main:
     steps:
-      if env.IS_BETA == false
-      uses: stefanzweifel/git-auto-commit-action@v4
+      - if env.IS_BETA == false
+        uses: actions/checkout@v4
+        uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: 'style fixes by ruff'
           branch: mains
