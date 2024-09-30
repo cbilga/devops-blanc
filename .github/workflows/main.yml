@@ -32,21 +32,28 @@ jobs:
       - name: Run tests
         run: |
           sh scripts/mktest.sh
-      - name: Test check
-        run: |
-          echo ${{ env.IS_BETA }}
+      #- name: Test check
+      #  run: |
+      #    echo ${{ env.IS_BETA }}
 
       - run: pip install ruff
       - run: | 
           ruff check .
-
-  
-  deploy-main:
-    runs-on: ubuntu-latest
-    needs: [build]
-    steps:
       - uses: actions/checkout@v4
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: 'style fixes by ruff'
-          branch: main
+          tagging_message: 'Beta: ${{ env.IS_BETA }}'
+
+
+
+  
+  #deploy-main:
+  #  runs-on: ubuntu-latest
+  #  needs: [build]
+  #  steps:
+  #    - uses: actions/checkout@v4
+  #    - uses: stefanzweifel/git-auto-commit-action@v4
+  #      with:
+  #        commit_message: 'style fixes by ruff'
+  #        branch: main
