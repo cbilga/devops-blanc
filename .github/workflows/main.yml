@@ -44,6 +44,7 @@ jobs:
       deploy-on-main: ${{ env.IS_BETA }}
   
   deploy-main:
+    runs-on: ubuntu-latest
     if: build.outputs == false 
     steps:
       - uses: actions/checkout@v4
