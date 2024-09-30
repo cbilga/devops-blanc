@@ -10,7 +10,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      GITHUB_ENV: "ISBETA=false"
+      GITHUB_EN: "ISBETA=false"
 
     steps:
       - name: Checkout code
@@ -32,6 +32,7 @@ jobs:
       - name: Test check
         run: |
           echo ${{ env.GITHUB_ENV }}
+          echo ${{ env.GITHUB_EN }}
      
       #- name: Lint with Ruff
       #  run: |
