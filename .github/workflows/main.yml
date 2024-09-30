@@ -29,7 +29,7 @@ jobs:
           sh scripts/mktest.sh
       - name: Test check
         run: |
-          echo ${{GITHUB_ENV}}
+          echo ${{ end.GITHUB_ENV }}
      
       #- name: Lint with Ruff
       #  run: |
