@@ -39,7 +39,6 @@ jobs:
       - run: pip install ruff
       - run: | 
           ruff check .
-          ruff fix .
     outputs:
       deploy-on-main: ${{ env.IS_BETA }}
   
