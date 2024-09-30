@@ -10,7 +10,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      GITHUB_ENV="ISBETA=false"
+      GITHUB_ENV: "ISBETA=false"
 
     steps:
       - name: Checkout code
