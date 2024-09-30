@@ -45,7 +45,7 @@ jobs:
   
   deploy-main:
     runs-on: ubuntu-latest
-    if: build.outputs == false 
+    if: needs.deploy-main.build.outputs == false 
     steps:
       - uses: actions/checkout@v4
       - uses: stefanzweifel/git-auto-commit-action@v4
