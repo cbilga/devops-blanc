@@ -26,7 +26,7 @@ class TestFindInDictionary(unittest.TestCase):
                 n = random.randrange(max)
                 word = list(value)[n]
                 pattern = list(word)
-                pattern[0] = "#"
+                pattern[0] = "?"
                 pattern = "".join(pattern)
                 with self.subTest(f"looking for {pattern}"):
                     self.assertNotIn(word, ",".join(find_words(d, pattern)))
