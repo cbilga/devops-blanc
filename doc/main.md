@@ -7,7 +7,7 @@
  **Fonctionnement général:**
  
  1. **Chargement du dictionnaire:** Le module charge un dictionnaire de mots depuis un fichier texte.
- 2. **Recherche de mots:** L'utilisateur saisit un mot à rechercher, qui peut contenir des caractères génériques (représentés par le caractère '?'). 
+ 2. **Recherche de mots:** L'utilisateur saisit un mot à rechercher, qui peut contenir des caractères génériques (représentés par le caractère '?').
  3. **Affichage des résultats:** Le module affiche tous les mots du dictionnaire qui correspondent au motif de recherche.
  
  **Exemple d'utilisation:**
@@ -53,6 +53,6 @@
  * Afficher les résultats à l'utilisateur.
 
 # FILE
- /media/cosmin/1252C72752C70E83/Formation DevOps/devops-blanc/src/main.py
+ /home/runner/work/devops-blanc/devops-blanc/src/main.py
 
 
