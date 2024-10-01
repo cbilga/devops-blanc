@@ -4,7 +4,7 @@ Ce module permet de rechercher des mots dans un dictionnaire, en utilisant des c
 **Fonctionnement général:**
 
 1. **Chargement du dictionnaire:** Le module charge un dictionnaire de mots depuis un fichier texte.
-2. **Recherche de mots:** L'utilisateur saisit un mot à rechercher, qui peut contenir des caractères génériques (représentés par le caractère '?'). 
+2. **Recherche de mots:** L'utilisateur saisit un mot à rechercher, qui peut contenir des caractères génériques (représentés par le caractère '?').
 3. **Affichage des résultats:** Le module affiche tous les mots du dictionnaire qui correspondent au motif de recherche.
 
 **Exemple d'utilisation:**
@@ -26,6 +26,8 @@ Pour rechercher tous les mots de 4 lettres commençant par 'C' et se terminant p
 
 import re
 import os
+import string
+
 
 def create_dictionary():
     """
@@ -35,19 +37,24 @@ def create_dictionary():
         dict: Un dictionnaire où les clés sont des nombres représentant la longueur des mots,
               et les valeurs sont des ensembles de mots de cette longueur.
     """
-    print('Chargement du dictionnaire ...')
-    words_count=0
+    print("Chargement du dictionnaire ...")
+    words_count = 0
     dictionary = {}
-    dir_path=os.path.dirname(os.path.realpath(__file__))
-    dictionary_path=os.path.join(dir_path,'data','dico.txt')
+    dir_path = os.path.dirname(os.path.realpath(__file__))
+    dictionary_path = os.path.join(dir_path, "data", "dico.txt")
     with open(dictionary_path, "r") as f:
         for line in f:
-            word = line.strip().upper()  # Convertit en majuscules et supprime les espaces
+            word = (
+                line.strip().upper()
+            )  # Convertit en majuscules et supprime les espaces
             length = len(word)
-            dictionary.setdefault(length, set()).add(word)  # Utilise un set pour éviter les doublons
-            words_count+=1
-    print(f'{words_count} mots chargés')
+            dictionary.setdefault(length, set()).add(
+                word
+            )  # Utilise un set pour éviter les doublons
+            words_count += 1
+    print(f"{words_count} mots chargés")
     return dictionary
+
 
 def find_words(dictionary, pattern):
     """
@@ -60,12 +67,13 @@ def find_words(dictionary, pattern):
     Returns:
         list: Une liste de mots correspondant au pattern.
     """
-    regex = pattern.strip().upper().replace('?', '.')
+    regex = pattern.strip().upper().replace("?", ".")
     length = len(regex)
     if length in dictionary:
         return [word for word in dictionary[length] if re.match(regex, word)]
     else:
         return []
+
 
 def run():
     """
@@ -77,17 +85,20 @@ def run():
     * Effectuer des recherches de mots avec des wildcards.
     * Afficher les résultats à l'utilisateur.
     """
-    dictionary=create_dictionary()
+    dictionary = create_dictionary()
     while True:
-        proposal = input("Entrez votre mot avec ? pour les lettres manquantes, ou 'q' pour quitter \n mot : ")
-        if proposal == 'q':
+        proposal = input(
+            "Entrez votre mot avec ? pour les lettres manquantes, ou 'q' pour quitter \n mot : "
+        )
+        if proposal == "q":
             break
-        submissions=find_words(dictionary,proposal)
-        if len(submissions)>0:
+        submissions = find_words(dictionary, proposal)
+        if len(submissions) > 0:
             for submission in submissions:
                 print(submission)
         else:
-            print('Il n\'y a pas de mots correspondants dans le dictionnaire')
+            print("Il n'y a pas de mots correspondants dans le dictionnaire")
+
 
 if __name__ == "__main__":
     run()

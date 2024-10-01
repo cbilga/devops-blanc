@@ -24,8 +24,8 @@ jobs:
         uses: actions/checkout@v4
       - name: Set up Python
         uses: actions/setup-python@v5
-      #  with:
-      #    python-version: '3.x'
+        with:
+          python-version: '3.11'
       - name: Generate documentation
         run: |
           sh scripts/mkdoc.sh
@@ -38,11 +38,12 @@ jobs:
 
       - run: pip install ruff
       - run: | 
-          ruff check .
+          ruff check --fix .
+          ruff format .
       - uses: actions/checkout@v4
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: 'style fixes by ruff'
+          commit_message: 'Fix and format with ruff'
           tagging_message: 'Beta: ${{ env.IS_BETA }}'
 
 
