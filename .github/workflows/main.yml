@@ -40,7 +40,7 @@ jobs:
       - run: pip install ruff
       - name: Run Ruff
         run: | 
-          ruff check --fix .
+          ruff check --output-format=github --fix .
           ruff format .
       - uses: actions/checkout@v4
       - uses: stefanzweifel/git-auto-commit-action@v4
