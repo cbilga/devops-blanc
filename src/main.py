@@ -26,7 +26,6 @@ Pour rechercher tous les mots de 4 lettres commençant par 'C' et se terminant p
 
 import re
 import os
-import string
 
 
 def create_dictionary():
