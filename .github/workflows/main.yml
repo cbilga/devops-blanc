@@ -37,9 +37,11 @@ jobs:
       #  run: |
       #    echo ${{ env.IS_BETA }}
 
-      - run: pip install ruff
+      #- run: pip install ruff
       - name: Run Ruff
         uses: chartboost/ruff-action@v1
+        with:
+          args: check --fix
         #run: | 
         #  ruff check --output-format=github --fix .
         #  ruff format .
